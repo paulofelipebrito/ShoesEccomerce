@@ -1,8 +1,16 @@
 import express from 'express';
-import products from './data/Products.js';
+//import products from './data/Products.js';
+import dotenv from "dotenv";
+import connectDatabase from './config/MongoDb.js';
+import ImportData from './DataImport.js';
+import productRoute from './Routes/ProductRoutes.js';
+import { errorHandler, notFound } from './Middleware/Errors.js';
 
+dotenv.config();
+connectDatabase();
 const app = express();
 
+/*
 // LOAD PRODUCT FROM SERVER
 app.get("/api/products", (req, res) => {
   res.json(products);
@@ -16,6 +24,16 @@ app.get("/api/products/:id", (req, res) => {
 
 app.get("/", (req, res) => {
   res.send("API is running...");
-})
+})*/
 
-app.listen(5000, console.log("Server running in http://localhost:5000"));
+//API 
+app.use("/api/import", ImportData);
+app.use("/api/products", productRoute);
+
+//ERROR HANDLER
+app.use(notFound);
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 1000;
+
+app.listen(PORT, console.log(`Server running in http://localhost:${PORT}`));
