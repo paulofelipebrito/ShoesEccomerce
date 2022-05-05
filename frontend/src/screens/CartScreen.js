@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Header from "./../components/Header";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from "../Redux/Actions/cartActions";
+import { addToCart, removeFromCart } from "../Redux/Actions/cartActions";
 
 const CartScreen = ({match, location, history}) => {
   window.scrollTo(0, 0);
@@ -27,8 +27,8 @@ const CartScreen = ({match, location, history}) => {
     history.push("/login?redirect=shipping");
   }
 
-  const removeFromCartHandler = (e) => {
-    e.preventDefault();
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
   }
   return (
     <>
@@ -36,7 +36,7 @@ const CartScreen = ({match, location, history}) => {
       {/* Cart */}
       <div className="container">
         {
-          cartItems.lenght === 0 
+          cartItems.length === 0 
           ? 
             (
               <div className=" alert alert-info text-center mt-3">
@@ -58,7 +58,7 @@ const CartScreen = ({match, location, history}) => {
                 <div className=" alert alert-info text-center mt-3">
                   Total Cart Products
                   <Link className="text-success mx-2" to="/cart">
-                    ({cartItems.lenght})
+                    ({cartItems.length})
                   </Link>
                 </div>
                 {/* cartiterm */}
@@ -66,7 +66,7 @@ const CartScreen = ({match, location, history}) => {
                   cartItems.map((item) => (
                     <div className="cart-iterm row" key={item.product}>
                       <div 
-                        onClick={removeFromCartHandler}
+                        onClick={() => removeFromCartHandler(item.product)}
                         className="remove-button d-flex justify-content-center align-items-center"
                         >
                         <i className="fas fa-times"></i>
