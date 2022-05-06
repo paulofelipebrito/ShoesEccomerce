@@ -4,8 +4,8 @@ import Header from "./../components/Header";
 import Rating from "../components/homeComponents/Rating";
 import { Link } from "react-router-dom";
 import Message from "./../components/LoadingError/Error";
-import { listProductDetails } from "../Redux/Actions/ProductActions";
 import Loading from "../components/LoadingError/Loading";
+import { listProductDetails } from "../Redux/Actions/ProductActions";
 
 const SingleProduct = ({ history, match }) => {
   const [qty, setQty] = useState(1);
