@@ -1,5 +1,5 @@
 /* eslint-disable no-fallthrough */
-import {CART_REMOVE_ITEM, CART_ADD_ITEM, CART_SAVE_SHIPING_ADDRESS, CART_SAVE_PAYMENT_METHOD} from '../Constants/CartConstants';
+import {CART_REMOVE_ITEM, CART_ADD_ITEM, CART_SAVE_SHIPING_ADDRESS, CART_SAVE_PAYMENT_METHOD, CART_CLEAR_ITEM} from '../Constants/CartConstants';
 
 export const cartReducer = (state = { cartItems: [], shippingAddress: {}}, action) => {
   switch(action.type) {
@@ -32,6 +32,11 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {}}, actio
         return{
           ...state,
           paymentMethod: action.payload,
+        }
+      case CART_CLEAR_ITEM:
+        return{
+          ...state,
+          cartItems: [],
         }
       default:
         return state;
