@@ -10,7 +10,14 @@ productRoute.get(
   "/",
    asyncHandler(
     async (req, res) => {
-      const products = await Product.find({});
+      console.log(req.body.keyword);
+      const keyword = req.query.keyword ? {
+        name:{
+          $regex: req.query.keyword,
+          $options: "i"
+        },
+      } : {};
+      const products = await Product.find({...keyword});
       res.json(products);
     }
 ));
