@@ -10,6 +10,7 @@ import {
   USER_LIST_RESET} 
   from '../Constants/UserContants';
 import { toast } from "react-toastify";
+import { URL } from "../Url";
 
 //LOGIN
 export const login = (email,password) => async (dispatch) => {
@@ -31,7 +32,7 @@ export const login = (email,password) => async (dispatch) => {
     }
     
     const {data} = await axios.post(
-      `/api/users/login`,
+      `${URL}/api/users/login`,
       {email,password}, 
       config
     );
@@ -83,7 +84,7 @@ export const listUser = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users`, config);
+    const { data } = await axios.get(`${URL}/api/users`, config);
 
     dispatch({ type: USER_LIST_SUCCESS, payload: data });
   } catch (error) {

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_DETAIL_REQUEST, PRODUCT_DETAIL_FAIL, PRODUCT_DETAIL_SUCCESS, PRODUCT_CREATE_REVIEW_REQUEST, PRODUCT_CREATE_REVIEW_SUCCESS, PRODUCT_CREATE_REVIEW_FAIL } from "../Constants/ProductConstants";
+import { URL } from "../Url";
 import { logout } from "./userActions";
 
 //PRODUCT LIST
@@ -9,7 +10,7 @@ export const listProduct = (keyword=" ", pageNumber=" ") => async (dispatch) => 
       type: PRODUCT_LIST_REQUEST
     }) 
     
-    const {data} = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
+    const {data} = await axios.get(`${URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -34,7 +35,7 @@ export const listProductDetails = (id) => async (dispatch) => {
       type: PRODUCT_DETAIL_REQUEST
     })
 
-    const {data} = await axios.get(`/api/products/${id}`);
+    const {data} = await axios.get(`${URL}/api/products/${id}`);
 
     dispatch({
       type: PRODUCT_DETAIL_SUCCESS,
@@ -71,7 +72,7 @@ export const createProductReview = (productId, review) => async (dispatch,getSta
     };
 
     await axios.post(
-      `/api/products/${productId}/review`,
+      `${URL}/api/products/${productId}/review`,
       review,
       config);
 
