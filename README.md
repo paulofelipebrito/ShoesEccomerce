@@ -103,24 +103,46 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/paulofelipebrito/ShoesEccomerce
    ```
-2. Install NPM packages
+2. Open server folder
+   ```sh
+   cd server 
+   ```
+   * Install NPM packages
    ```sh
    npm install 
    ```
-3. Install NPM packages
+   * Start the app with yarn
+   ```sh
+   npm start 
+   ```
+3. Open frontend folder
+   ```sh
+   cd frontend 
+   ```
+   * Install NPM packages
    ```sh
    npm install 
    ```
-3. Install NPM packages
+   * Start the app with yarn
+   ```sh
+   npm start 
+   ```
+4. Open dashboard folder
+   ```sh
+   cd frontend 
+   ```
+   * Install NPM packages
    ```sh
    npm install 
    ```
-4. Start the app with yarn
+   * Start the app with yarn
    ```sh
-     npm start
-   ```
+   npm start 
+   ```  
    
 5. Visit `http://localhost:3000/` on your browser
+   
+6. Visit `http://localhost:4000/` on your browser
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
