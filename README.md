@@ -129,7 +129,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 4. Open dashboard folder
    ```sh
-   cd frontend 
+   cd dashboard 
    ```
    * Install NPM packages
    ```sh
