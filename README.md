@@ -36,7 +36,7 @@
     ShoesEccomerce
 </h1>
 
-[🔗**shoesshop-client.herokuapp.co**][deploy-url]
+[🔗**shoesshop-client.herokuapp.com**][deploy-url]
 
 [🔗**shoesshop-dashboard.herokuapp.com**][dash-deploy-url]
 
